@@ -93,5 +93,7 @@ export DEFAULT_USER="feng"
 # socksProxyType = socks5
 alias hp="http_proxy=http://localhost:8123"
 
-export GOBIN=/usr/local/go/bin
+export GOROOT=/usr/local/go
+export GOBIN=$GOROOT/bin
 export GOPATH=/home/feng/go_work
+export PATH=$PATH:$GOBIN
