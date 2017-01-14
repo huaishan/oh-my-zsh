@@ -91,8 +91,6 @@ export DEFAULT_USER="feng"
 # sudo vim /etc/polipo/config
 # socksParentProxy = "localhost:1080"
 # socksProxyType = socks5
-# logFile=/var/log/polipo
-# logLevel=4
 alias hp="http_proxy=http://localhost:8123"
 
 export GOBIN=/usr/local/go/bin
