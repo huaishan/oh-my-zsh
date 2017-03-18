@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh_reload git svn z sublime history django python ubuntu pip man go emacs autopep8 zsh-syntax-highlighting)
+plugins=(zsh_reload git svn z sublime history django python ubuntu pip man go emacs autopep8 zsh-syntax-highlighting emacs)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,6 +92,8 @@ export DEFAULT_USER="feng"
 # socksParentProxy = "localhost:1080"
 # socksProxyType = socks5
 alias hp="http_proxy=http://localhost:8123"
+alias hsp="https_proxy=http://localhost:8123"
+hp=" -c http_proxy=http://localhost:8123"
 
 export GOROOT=/usr/local/go
 export GOBIN=$GOROOT/bin
