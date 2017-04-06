@@ -54,6 +54,8 @@ ZSH_THEME="agnoster"
 plugins=(zsh_reload git svn z sublime history django python ubuntu pip man go emacs autopep8 zsh-syntax-highlighting emacs)
 
 source $ZSH/oh-my-zsh.sh
+source /etc/profile
+source ~/.custom_zshrc
 
 # User configuration
 
@@ -95,7 +97,41 @@ alias hp="http_proxy=http://localhost:8123"
 alias hsp="https_proxy=http://localhost:8123"
 hp=" -c http_proxy=http://localhost:8123"
 
-export GOROOT=/usr/local/go
-export GOBIN=$GOROOT/bin
-export GOPATH=/home/feng/go_work
-export PATH=$PATH:$GOBIN
+
+gpip() {
+    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
+gpip3() {
+    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/pyenv
+source /usr/local/bin/virtualenvwrapper.sh
+
+if [ `uname -s` = "Darwin" ] ; then
+    echo "macOS"
+    export PATH="/usr/local/opt/freetds@0.91/bin:$PATH"
+    export PATH="/usr/local/opt/icu4c/bin:$PATH"
+    export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+    export PATH="$PATH:/usr/local/opt/openssl/bin"
+
+    export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+    alias emacs="/usr/local/Cellar/emacs/25.1/Emacs.app/Contents/MacOS/Emacs -nw"
+
+    export PATH=$PATH:/Library/PostgreSQL/9.6/bin/
+    export PGDATA=/usr/local/var/postgres/
+
+    export PATH="/usr/local/opt/go@1.7/bin:$PATH"
+    export GOROOT=/usr/local/opt/go@1.7/libexec
+    export GOBIN=$GOROOT/bin
+    export GOPATH=/Users/feng/go_work
+    export PATH=$PATH:$GOBIN
+
+else
+    echo "Linux"
+    export GOROOT=/usr/local/go
+    export GOBIN=$GOROOT/bin
+    export GOPATH=/home/feng/go_work
+    export PATH=$PATH:$GOBIN
+fi
