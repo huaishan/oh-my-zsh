@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh_reload git svn z sublime history django python ubuntu pip man go emacs autopep8 zsh-syntax-highlighting emacs)
+plugins=(zsh_reload git z history django python ubuntu pip man go emacs autopep8 zsh-syntax-highlighting httpie brew docker docker-compose docker-machine iterm2 pyenv)
 
 source $ZSH/oh-my-zsh.sh
 source /etc/profile
@@ -96,13 +96,16 @@ export DEFAULT_USER="feng"
 alias hp="http_proxy=http://localhost:8123"
 alias hsp="https_proxy=http://localhost:8123"
 hp=" -c http_proxy=http://localhost:8123"
+alias ap="ALL_PROXY=socks5://127.0.0.1:1080"
+
+alias http="http --style=monokai"
 
 
 gpip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+    PIP_REQUIRE_VIRTUALENV="false" pip "$@"
 }
 gpip3() {
-    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+    PIP_REQUIRE_VIRTUALENV="false" pip3 "$@"
 }
 
 export WORKON_HOME=$HOME/.virtualenvs
@@ -117,17 +120,25 @@ if [ `uname -s` = "Darwin" ] ; then
     export PATH="$PATH:/usr/local/opt/openssl/bin"
 
     export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-    alias emacs="/usr/local/Cellar/emacs/25.1/Emacs.app/Contents/MacOS/Emacs -nw"
+    alias emacs="/usr/local/Cellar/emacs/26.1_1/bin/emacs -nw"
 
     export PATH=$PATH:/Library/PostgreSQL/9.6/bin/
     export PGDATA=/usr/local/var/postgres/
 
-    export PATH="/usr/local/opt/go@1.7/bin:$PATH"
-    export GOROOT=/usr/local/opt/go@1.7/libexec
+    export PATH="/usr/local/Cellar/go/1.12/bin:$PATH"
+    export GOROOT=/usr/local/Cellar/go/1.12/libexec  # /usr/local/go
     export GOBIN=$GOROOT/bin
     export GOPATH=/Users/feng/go_work
     export PATH=$PATH:$GOBIN
+    export GO111MODULE=on
+    export PATH=/opt/local/bin:$PATH
+    export PATH=/opt/local/sbin:$PATH
+    export PATH="/usr/local/opt/node@8/bin:$PATH"
+    
+    export PATH="$PATH:/Users/feng/Public/flutter/bin"   # flutter sdk
 
+    export PYENV_ROOT="$HOME/.pyenv"
+    
 else
     echo "Linux"
     export GOROOT=/usr/local/go
@@ -136,7 +147,7 @@ else
     export PATH=$PATH:$GOBIN
 fi
 
-alias emacsq="emacs -Q"
+alias emq="emacs -Q"
 
 #alias for cnpm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
@@ -145,3 +156,7 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --userconfig=$HOME/.cnpmrc"
 
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+# [[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zshexport PATH="/usr/local/opt/curl/bin:$PATH"
