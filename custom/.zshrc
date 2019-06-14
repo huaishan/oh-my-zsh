@@ -51,7 +51,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh_reload git z history django python ubuntu pip man go emacs autopep8 httpie brew docker docker-compose docker-machine iterm2 pyenv rust)
+plugins=(zsh_reload git z history django python ubuntu pip man go emacs autopep8 httpie brew docker docker-compose docker-machine iterm2 rust pipenv)
 
 source $ZSH/oh-my-zsh.sh
 source /etc/profile
@@ -122,11 +122,10 @@ if [ `uname -s` = "Darwin" ] ; then
     export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
     alias emacs="/usr/local/Cellar/emacs/26.1_1/bin/emacs -nw"
 
-    export PATH=$PATH:/Library/PostgreSQL/9.6/bin/
     export PGDATA=/usr/local/var/postgres/
 
-    export PATH="/usr/local/Cellar/go/1.12/bin:$PATH"
-    export GOROOT=/usr/local/Cellar/go/1.12/libexec  # /usr/local/go
+    export PATH="/usr/local/Cellar/go/1.12.5/bin:$PATH"
+    export GOROOT=/usr/local/Cellar/go/1.12.5/libexec  # /usr/local/go
     export GOBIN=$GOROOT/bin
     export GOPATH=/Users/feng/go_work
     export PATH=$PATH:$GOBIN
@@ -137,8 +136,8 @@ if [ `uname -s` = "Darwin" ] ; then
     
     export PATH="$PATH:/Users/feng/Public/flutter/bin"   # flutter sdk
 
-    export PYENV_ROOT="$HOME/.pyenv"
-    
+    export PATH="$HOME/.cargo/bin:$PATH"  # rust
+
 else
     echo "Linux"
     export GOROOT=/usr/local/go
