@@ -138,7 +138,7 @@ if [ `uname -s` = "Darwin" ] ; then
 
     export PATH="$HOME/.cargo/bin:$PATH"  # rust
 
-    alias swift="PATH=/System/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH swift"
+    alias swift="PATH=/usr/bin:$PATH swift"
 
 else
     echo "Linux"
